@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace Sphinx
+namespace sphinx
 {
 
 namespace error
@@ -20,10 +20,10 @@ class SphinxStatus
 {
 public:
     std::string SphinxErrorMsg;
-    SphinxErrorCode SphinxErrorCode;
+    SphinxErrorCode sphinxErrorCode;
 private:
 public:
-    SphinxStatus(std::string errorMsg, SphinxErrorCode errorCode) : SphinxErrorMsg(errorMsg), SphinxErrorCode(errorCode) {}
+    SphinxStatus(std::string errorMsg, SphinxErrorCode errorCode) : SphinxErrorMsg(errorMsg), sphinxErrorCode(errorCode) {}
 };
 
 SphinxStatus SphinxOK(void);

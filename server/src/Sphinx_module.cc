@@ -1,12 +1,12 @@
 #include "Sphinx_module.h"
 
 std::string 
-Sphinx::module::SphinxModuleServer::GetSymError(DLHANDLE dlHandle)
+sphinx::module::SphinxModuleServer::GetSymError(DLHANDLE dlHandle)
 {   
     return std::string(dlerror());
 }
 
-Sphinx::module::SphinxModuleServer::~SphinxModuleServer()
+sphinx::module::SphinxModuleServer::~SphinxModuleServer()
 {
     for(auto it = dlMap.begin(); it != dlMap.end(); it++)
     {
@@ -15,8 +15,15 @@ Sphinx::module::SphinxModuleServer::~SphinxModuleServer()
     }
 }
 
-Sphinx::error::SphinxStatus
-Sphinx::module::SphinxModuleServer::Commit(std::string&& moduleName)
+sphinx::error::SphinxStatus
+sphinx::module::SphinxModuleServer::Start()
+{
+
+}
+
+
+sphinx::error::SphinxStatus
+sphinx::module::SphinxModuleServer::Commit(std::string&& moduleName)
 {
     DLHANDLE dlHandle = nullptr;
     Sphinx_MODULE_MAIN moduleMain = nullptr;
@@ -24,9 +31,9 @@ Sphinx::module::SphinxModuleServer::Commit(std::string&& moduleName)
     dlHandle = dlopen(moduleName.c_str(), RTLD_LAZY);
 
     if(dlHandle == nullptr)
-        return Sphinx::error::SphinxErrorNullPtr("Failed to get dynamic library handle!");
+        return sphinx::error::SphinxErrorNullPtr("Failed to get dynamic library handle!");
     
     moduleMain = reinterpret_cast<Sphinx_MODULE_MAIN>(dlsym(dlHandle, "SphinxModuleMain"));
     
-    return Sphinx::error::SphinxOK();
+    return sphinx::error::SphinxOK();
 }

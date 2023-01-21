@@ -3,7 +3,7 @@
 
 #include <coroutine>
 
-namespace Sphinx
+namespace sphinx
 {
 
 namespace task

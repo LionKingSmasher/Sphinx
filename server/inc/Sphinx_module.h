@@ -11,7 +11,7 @@
 typedef int (*Sphinx_MODULE_MAIN)(int, char**);
 typedef void* DLHANDLE;
 
-namespace Sphinx
+namespace sphinx
 {
 
 namespace module
@@ -32,13 +32,13 @@ public:
 
     ~SphinxModuleServer();
 
-    Sphinx::error::SphinxStatus
+    sphinx::error::SphinxStatus
     Start();
 
-    Sphinx::error::SphinxStatus
+    sphinx::error::SphinxStatus
     Stop();
 
-    Sphinx::error::SphinxStatus
+    sphinx::error::SphinxStatus
     Commit(std::string&& moduleName);
 };
 

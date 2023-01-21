@@ -4,5 +4,5 @@
 
 int main(int argc, char** argv)
 {
-    Sphinx::module::SphinxModuleServer SphinxModuleServer;
+    sphinx::module::SphinxModuleServer SphinxModuleServer;
 }

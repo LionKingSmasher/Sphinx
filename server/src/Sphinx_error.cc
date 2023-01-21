@@ -1,22 +1,22 @@
 #include "Sphinx_error.h"
 
 [[nodiscard]]
-Sphinx::error::SphinxStatus 
-Sphinx::error::SphinxOK(void)
+sphinx::error::SphinxStatus 
+sphinx::error::SphinxOK(void)
 {
-    return SphinxStatus("", Sphinx::error::SphinxErrorCode::Sphinx_OK);
+    return SphinxStatus("", sphinx::error::SphinxErrorCode::Sphinx_OK);
 }
 
 [[nodiscard]]
-Sphinx::error::SphinxStatus
-Sphinx::error::SphinxError(std::string errorMsg)
+sphinx::error::SphinxStatus
+sphinx::error::SphinxError(std::string errorMsg)
 {
-    return SphinxStatus(errorMsg, Sphinx::error::SphinxErrorCode::Sphinx_ERROR);
+    return SphinxStatus(errorMsg, sphinx::error::SphinxErrorCode::Sphinx_ERROR);
 }
 
 [[nodiscard]]
-Sphinx::error::SphinxStatus
-Sphinx::error::SphinxErrorNullPtr(std::string errorMsg)
+sphinx::error::SphinxStatus
+sphinx::error::SphinxErrorNullPtr(std::string errorMsg)
 {
-    return SphinxStatus(errorMsg, Sphinx::error::SphinxErrorCode::Sphinx_ERROR_NULL_PTR);
+    return SphinxStatus(errorMsg, sphinx::error::SphinxErrorCode::Sphinx_ERROR_NULL_PTR);
 }
