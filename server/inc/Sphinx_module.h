@@ -1,26 +1,26 @@
-#ifndef __SPINX_MODULE_H__
-#define __SPINX_MODULE_H__
+#ifndef __Sphinx_MODULE_H__
+#define __Sphinx_MODULE_H__
 
-#include "Spinx_error.h"
+#include "Sphinx_error.h"
 
 #include <dlfcn.h>
 
 #include <string>
 #include <unordered_map>
 
-typedef int (*SPINX_MODULE_MAIN)(int, char**);
+typedef int (*Sphinx_MODULE_MAIN)(int, char**);
 typedef void* DLHANDLE;
 
-namespace spinx
+namespace Sphinx
 {
 
 namespace module
 {
 
-class SpinxModuleServer
+class SphinxModuleServer
 {
     // Private Instance
-    std::unordered_map<DLHANDLE, SPINX_MODULE_MAIN> dlMap;
+    std::unordered_map<DLHANDLE, Sphinx_MODULE_MAIN> dlMap;
 public:
     // Public Instatnce
 private:
@@ -30,15 +30,15 @@ private:
 public:
     // Public Method
 
-    ~SpinxModuleServer();
+    ~SphinxModuleServer();
 
-    spinx::error::SpinxStatus
+    Sphinx::error::SphinxStatus
     Start();
 
-    spinx::error::SpinxStatus
+    Sphinx::error::SphinxStatus
     Stop();
 
-    spinx::error::SpinxStatus
+    Sphinx::error::SphinxStatus
     Commit(std::string&& moduleName);
 };
 
