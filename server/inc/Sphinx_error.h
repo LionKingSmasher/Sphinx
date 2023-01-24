@@ -19,12 +19,15 @@ enum class SphinxErrorCode : int
     SPHINX_OK,
     SPHINX_ERROR,
     SPHINX_ERROR_NULL_PTR,
+    SPHINX_ERROR_SOCKET_CREATE_FAILED,
     SPHINX_ERROR_SOCKET_BIND_FAILED,
+    SPHINX_ERROR_SOCKET_LISTEN_FAILED
 };
 
 class SphinxStatus
 {
 private:
+public:
     SphinxErrorCode sphinxErrorCode;
 private:
 public:
@@ -44,8 +47,14 @@ SphinxError(void);
 SphinxStatus 
 SphinxErrorNullPtr(void);
 
+SphinxStatus
+SphinxErrorSocketCreateFailed(void);
+
 SphinxStatus 
-SphinxErrorSocketBindFailed(std::string errorMsg);
+SphinxErrorSocketBindFailed(void);
+
+SphinxStatus
+SphinxErrorSocketListenFailed(void);
 
 }
 

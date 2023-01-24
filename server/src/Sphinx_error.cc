@@ -29,6 +29,27 @@ sphinx::error::SphinxErrorNullPtr(void)
     return SphinxStatus(sphinx::error::SphinxErrorCode::SPHINX_ERROR_NULL_PTR);
 }
 
+[[nodiscard]]
+sphinx::error::SphinxStatus
+sphinx::error::SpinxErrorSocketCreateFailed(void)
+{
+    return SphinxStatus(sphinx::error::SphinxErrorCode::SPHINX_ERROR_SOCKET_CREATE_FAILED);
+}
+
+[[nodiscard]]
+sphinx::error::SphinxStatus
+sphinx::error::SphinxErrorSocketBindFailed(void)
+{
+    return SphinxStatus(sphinx::error::SphinxErrorCode::SPHINX_ERROR_SOCKET_BIND_FAILED);
+}
+
+[[nodiscard]]
+sphinx::error::SphinxStatus
+sphinx::error::SphinxErrorSocketListenFailed()
+{
+    return SphinxStatus(sphinx::error::SphinxErrorCode::SPHINX_ERROR_SOCKET_LISTEN_FAILED);
+}
+
 std::ostream&
 sphinx::error::SphinxStatus::operator<<(std::string&& str)
 {
