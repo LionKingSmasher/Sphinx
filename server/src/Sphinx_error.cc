@@ -53,10 +53,10 @@ sphinx::error::SphinxErrorSocketListenFailed()
 std::ostream&
 sphinx::error::SphinxStatus::operator<<(std::string&& str)
 {
-    std::ostream& os = std::cout;
-    std::ostream& null = SphinxNullStream();
+    static std::ostream& os = std::cout;
+    static std::ostream& null = SphinxNullStream();
     if(IS_SPHINX_OK(sphinxErrorCode))
         return null;
     else
-        return os;
+        return os << "!--- ";
 }

@@ -18,7 +18,7 @@ sphinx::module::SphinxModuleServer::~SphinxModuleServer()
 sphinx::error::SphinxStatus
 sphinx::module::SphinxModuleServer::Start()
 {
-
+    
 }
 
 
@@ -31,7 +31,7 @@ sphinx::module::SphinxModuleServer::Commit(std::string&& moduleName)
     dlHandle = dlopen(moduleName.c_str(), RTLD_LAZY);
 
     if(dlHandle == nullptr)
-        return sphinx::error::SphinxErrorNullPtr("Failed to get dynamic library handle!");
+        return sphinx::error::SphinxErrorNullPtr();
     
     moduleMain = reinterpret_cast<Sphinx_MODULE_MAIN>(dlsym(dlHandle, "SphinxModuleMain"));
     

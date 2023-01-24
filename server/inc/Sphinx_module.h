@@ -1,6 +1,7 @@
 #ifndef __Sphinx_MODULE_H__
 #define __Sphinx_MODULE_H__
 
+#include "Sphinx_socket.h"
 #include "Sphinx_error.h"
 
 #include <dlfcn.h>
@@ -17,7 +18,7 @@ namespace sphinx
 namespace module
 {
 
-class SphinxModuleServer
+class SphinxModuleServer : public Socket::SphinxSocket
 {
     // Private Instance
     std::unordered_map<DLHANDLE, Sphinx_MODULE_MAIN> dlMap;
@@ -31,6 +32,10 @@ public:
     // Public Method
 
     ~SphinxModuleServer();
+
+    sphinx::error::SphinxStatus
+    Run()
+    override;
 
     sphinx::error::SphinxStatus
     Start();

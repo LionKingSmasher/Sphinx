@@ -30,7 +30,7 @@ sphinx::Socket::SphinxSocket::BindSocket()
 sphinx::error::SphinxStatus
 sphinx::Socket::SphinxSocket::ListenSocket()
 {
-    if(listen(socketFd, 5) < 0)
+    if(listen(socketFd, 10) < 0)
         return sphinx::error::SphinxErrorSocketListenFailed();
 }
 
@@ -48,6 +48,13 @@ sphinx::Socket::SphinxSocket::Open()
     status << "Failed to bind Socket!!\n";
     if(!IS_SPHINX_CLASS_OK(status))
         return status;
+    
+    status = ListenSocket();
+    status << "Failed to listen socket!\n";
+    if(!IS_SPHINX_CLASS_OK(status))
+        return status;
+    
+    return status;
 }
 
 sphinx::error::SphinxStatus

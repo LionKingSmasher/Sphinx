@@ -39,6 +39,10 @@ public:
     sphinx::error::SphinxStatus 
     Open();
 
+    virtual
+    sphinx::error::SphinxStatus
+    Run();
+
     sphinx::error::SphinxStatus 
     Close();
 };
