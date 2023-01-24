@@ -31,7 +31,7 @@ sphinx::error::SphinxErrorNullPtr(void)
 
 [[nodiscard]]
 sphinx::error::SphinxStatus
-sphinx::error::SpinxErrorSocketCreateFailed(void)
+sphinx::error::SphinxErrorSocketCreateFailed(void)
 {
     return SphinxStatus(sphinx::error::SphinxErrorCode::SPHINX_ERROR_SOCKET_CREATE_FAILED);
 }
