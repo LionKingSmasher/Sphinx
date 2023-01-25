@@ -5,8 +5,8 @@ sphinx::Socket::SphinxSocket::CreateSocket()
 {
     sphinx::error::SphinxStatus status;
 
-    socketFd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
-    if(socketFd < 0)
+    fd.socketFd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if(fd.socketFd < 0)
         status = sphinx::error::SphinxErrorSocketCreateFailed();
     else
         status = sphinx::error::SphinxOK();
@@ -23,14 +23,14 @@ sphinx::Socket::SphinxSocket::BindSocket()
     hostAddr.sin_port = htons(SPHINX_PORT);
     hostAddr.sin_addr.s_addr = 0;
 
-    if(bind(socketFd, reinterpret_cast<sockaddr*>(&hostAddr), sizeof(hostAddr)) < 0);
+    if(bind(fd.socketFd, reinterpret_cast<sockaddr*>(&hostAddr), sizeof(hostAddr)) < 0);
         return sphinx::error::SphinxErrorSocketBindFailed();
 }
 
 sphinx::error::SphinxStatus
 sphinx::Socket::SphinxSocket::ListenSocket()
 {
-    if(listen(socketFd, 10) < 0)
+    if(listen(fd.socketFd, 10) < 0)
         return sphinx::error::SphinxErrorSocketListenFailed();
 }
 
@@ -53,6 +53,8 @@ sphinx::Socket::SphinxSocket::Open()
     status << "Failed to listen socket!\n";
     if(!IS_SPHINX_CLASS_OK(status))
         return status;
+
+    fdVector.push_back(fd);
     
     return status;
 }
@@ -60,5 +62,12 @@ sphinx::Socket::SphinxSocket::Open()
 sphinx::error::SphinxStatus
 sphinx::Socket::SphinxSocket::Close()
 {
+    for(auto& i : fdVector)
+    {
+        if(i.clientFd != 0)
+            close(i.clientFd);
 
+        if(i.socketFd != 0)
+            close(i.socketFd);
+    }
 }

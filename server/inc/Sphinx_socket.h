@@ -3,7 +3,10 @@
 
 #include "Sphinx_error.h"
 
+#include <vector>
+
 #include <fcntl.h>
+#include <unistd.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -18,12 +21,17 @@ namespace sphinx
 namespace Socket
 {
 
+struct SphinxFDServerNClient
+{
+    int socketFd;
+    int clientFd;
+};
 
 class SphinxSocket
 {
 private:
-    int socketFd; // socket
-    int clientFd;
+    SphinxFDServerNClient fd;
+    std::vector<SphinxFDServerNClient> fdVector;
 public:
 private:
     sphinx::error::SphinxStatus 
@@ -41,7 +49,7 @@ public:
 
     virtual
     sphinx::error::SphinxStatus
-    Run();
+    Run() = 0;
 
     sphinx::error::SphinxStatus 
     Close();
