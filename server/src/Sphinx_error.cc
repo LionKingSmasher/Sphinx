@@ -1,6 +1,7 @@
 #include "Sphinx_error.h"
 
-std::ostream& SpinxNullStream()
+std::ostream& 
+sphinx::error::SphinxNullStream()
 {
     static std::ofstream os;
     if(!os.is_open())
