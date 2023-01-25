@@ -16,9 +16,20 @@ sphinx::module::SphinxModuleServer::~SphinxModuleServer()
 }
 
 sphinx::error::SphinxStatus
-sphinx::module::SphinxModuleServer::Start()
+sphinx::module::SphinxModuleServer::Run()
 {
     
+}
+
+sphinx::error::SphinxStatus
+sphinx::module::SphinxModuleServer::Start()
+{
+    sphinx::error::SphinxStatus status = sphinx::error::SphinxOK();
+    
+    status = Open();
+    status << "Failed to open socket";
+    if(!IS_SPHINX_CLASS_OK(status))
+        return status;
 }
 
 
